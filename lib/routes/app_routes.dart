@@ -7,8 +7,10 @@ abstract class AppRoutes {
   static const register_password = '/new_registeration_password.dart';
   static const register_info = '/register_info.dart';
 
-
-
-
-
+  //==================Home==================
+  static const String homescreen = "/homescreen";
+  static const String homepage = "/homepage";
+  static const String category = "/category";
+  static const String mybag = "/mybag";
+  static const String more = "/more";
 }

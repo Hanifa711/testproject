@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myshop/core/class/crud.dart';
 import 'package:myshop/routes/app_pages.dart';
 import 'package:myshop/routes/app_routes.dart';
 import 'package:myshop/view/widget/background_wrapper.dart';
@@ -12,6 +13,9 @@ void main() async {
   await ScreenUtil.ensureScreenSize();
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
+   WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
+  Get.put(Crud());
   runApp(MyApp());
 }
 
@@ -29,7 +33,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
        theme: ThemeData(
         textTheme: GoogleFonts.poppinsTextTheme()),
-        initialRoute: AppRoutes.splash,
+        initialRoute: AppRoutes.splash_phone_pre,
       getPages: AppPages.pages,
         builder: (context, child) {
         return BackgroundWrapper(child: child);
