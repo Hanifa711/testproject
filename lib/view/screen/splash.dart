@@ -35,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     // Navigate to next screen after delay
     Timer(const Duration(seconds: 3), () {
-      Get.toNamed(AppRoutes.products) ; 
+      Get.toNamed(AppRoutes.splash_phone) ; 
     });
   }
 

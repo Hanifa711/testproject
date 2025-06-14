@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:myshop/controller/confirm_password_controller.dart';
-import 'package:myshop/controller/password_controller.dart';
+import 'package:myshop/controller/auth_controller.dart';
+import 'package:myshop/controller/image_controller.dart';
+import 'package:myshop/core/functions/pick_image.dart';
+import 'package:myshop/routes/app_routes.dart';
+import 'package:myshop/view/screen/splash_phone_login.dart';
 import 'package:myshop/view/widget/custom_button.dart';
 import 'package:myshop/view/widget/custom_textfield.dart';
-import 'package:myshop/view/widget/password_textfield.dart';
 
 class RegisterationInfo extends StatelessWidget {
   final TextEditingController name_controller=TextEditingController();
+  final AuthController controller = Get.put(AuthController());
+  final ImageController image_controller = Get.put(ImageController());
   RegisterationInfo({super.key});
 
   @override
@@ -32,9 +36,18 @@ class RegisterationInfo extends StatelessWidget {
                   Center(child: CircleAvatar(
                     backgroundColor: Colors.grey[200],
                     radius: 70.sp,
-                    child: IconButton(onPressed:() {
-                      
-                    }, icon: Icon(Icons.add_a_photo_outlined,color: Colors.black,size:50.sp,)),
+                    child: IconButton(
+                      onPressed:() {
+                        pickImageView();
+                    },
+                     icon:Obx(() {
+                        if (image_controller.pickedImage.value != null) {
+                          return Image.file(image_controller.pickedImage.value!, height: 150);
+                        } else {
+                          return Icon(Icons.add_a_photo_outlined,color: Colors.black,size:50.sp,);
+                        }
+                      })
+                      ),
                   )),
                   SizedBox(height: 46.h),
                    CustomButton(
@@ -43,16 +56,29 @@ class RegisterationInfo extends StatelessWidget {
                    color: Colors.blue,
                    onPressed:(){}),
                     SizedBox(height: 18.h),
-                  CustomTextField(controller: name_controller,
+                  CustomTextField(
+                  controller: name_controller,
                   label: "Full Name",
                   preicon: Icon(Icons.person_outline),
+                  onChanged: (name) {
+                     userModel.name=name;
+                  },
                   ),
                    SizedBox(height: 200.h),
                   CustomButton(
                    text: "Next",
                    icon: Icons.arrow_right_alt,
                    onPressed:(){
-                    
+                    if(userModel.name!=null && userModel.phone !=null && userModel.password !=null){
+                      controller.register(
+                      name: userModel.name!, 
+                      phone: userModel.phone!,
+                      password: userModel.password!);
+                    }
+
+                    if(controller.userExist(userModel.phone!)){
+                       Get.toNamed(AppRoutes.products);
+                    }
                   })
             ],
           ),

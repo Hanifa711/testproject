@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:myshop/controller/auth_controller.dart';
 import 'package:myshop/controller/confirm_password_controller.dart';
 import 'package:myshop/controller/password_controller.dart';
+import 'package:myshop/routes/app_routes.dart';
+import 'package:myshop/view/screen/splash_phone_login.dart';
 import 'package:myshop/view/widget/custom_button.dart';
 import 'package:myshop/view/widget/password_textfield.dart';
 
@@ -11,6 +14,7 @@ class NewRegisterationPassword extends StatelessWidget {
   final TextEditingController confirm_controller=TextEditingController();
   final visibilityController = Get.put(PasswordController());
   final visibilityConfirmController = Get.put(ConfirmPasswordController());
+  final AuthController controller = Get.put(AuthController());
 
 
   NewRegisterationPassword({super.key});
@@ -51,7 +55,21 @@ class NewRegisterationPassword extends StatelessWidget {
                    text: "Finish, Good to go",
                    icon: Icons.arrow_right_alt,
                    onPressed:(){
-                    
+
+                    if(password_controller.text != confirm_controller.text){
+                      Get.snackbar("Error", "Unmatched Password!");
+                    }else{
+                      //change password 
+                      if(controller.userExist(userModel.phone!)){
+                        userModel.password=password_controller.text;
+                        controller.updatePassword(userModel);
+                      }else{
+                          print("Password Saved");
+                          userModel.password=password_controller.text;
+                          Get.toNamed(AppRoutes.register_info);
+                      }
+                     
+                    }                    
                   })
             ],
           ),

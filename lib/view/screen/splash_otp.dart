@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:myshop/controller/otp_controller.dart';
+import 'package:myshop/controller/auth_controller.dart';
 import 'package:myshop/core/constant/app_colors.dart';
+import 'package:myshop/routes/app_routes.dart';
 import 'package:myshop/view/widget/custom_button.dart';
 import 'package:myshop/view/widget/otp_widget.dart';
 
 class SplashPhoneOTP extends StatelessWidget {
   final TextEditingController phone_number_controller=TextEditingController();
-  final OtpController controller = Get.put(OtpController());
+    final AuthController controller = Get.put(AuthController());
+    String otpCode="";
 
 
   SplashPhoneOTP({super.key});
@@ -38,14 +40,21 @@ class SplashPhoneOTP extends StatelessWidget {
                   style:TextStyle(fontSize: 14.sp),),
                   SizedBox(height: 28.h),
                   OtpInputWidget(
-                     onCompleted: controller.verifyCode,
+                     onCompleted:(otp){
+                         otpCode=otp;
+                         print(otpCode);
+                     }
                     ),
                   Row(
                     children: [
-                      TextButton(onPressed: (){}, child: Text("Resend OTP",style:TextStyle(color: MyColors.orange),)),
+                      TextButton(onPressed: (){  
+                        controller.generateCode();
+                      }, 
+                      child: Text("Resend OTP",style:TextStyle(color: MyColors.orange),)),
                       SizedBox(width: 40.w),
-                      TextButton(onPressed: (){}, child: Text("Change Phone Number",style:TextStyle(color: Colors.grey))),
-
+                      TextButton(onPressed: (){
+                        Get.toNamed(AppRoutes.splash_phone) ; 
+                      }, child: Text("Change Phone Number",style:TextStyle(color: Colors.grey))),
                     ],
                   ),
                   SizedBox(height: 9.h),
@@ -53,6 +62,12 @@ class SplashPhoneOTP extends StatelessWidget {
                    text: "Next",
                    icon: Icons.arrow_right_alt,
                    onPressed:(){
+
+                    if(controller.verifyCode(otpCode)){
+                      Get.toNamed(AppRoutes.register_password);
+                    }else{
+                      Get.snackbar('Error', 'Incorrect OTP');
+                    }
                     
                   })
             ],

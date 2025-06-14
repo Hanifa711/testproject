@@ -5,8 +5,8 @@ import 'package:myshop/view/screen/product_view.dart';
 import 'package:myshop/view/screen/register_info.dart';
 import 'package:myshop/view/screen/splash.dart';
 import 'package:myshop/view/screen/splash_otp.dart';
-import 'package:myshop/view/screen/splash_phone.dart';
-import 'package:myshop/view/screen/splash_phone_pre.dart';
+import 'package:myshop/view/screen/splash_phone_login.dart';
+import 'package:myshop/view/screen/splash_password_login.dart';
 import 'app_routes.dart';
 
 class AppPages {
