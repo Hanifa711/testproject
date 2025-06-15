@@ -5,9 +5,9 @@ import 'package:myshop/controller/auth_controller.dart';
 import 'package:myshop/controller/confirm_password_controller.dart';
 import 'package:myshop/controller/password_controller.dart';
 import 'package:myshop/routes/app_routes.dart';
-import 'package:myshop/view/screen/splash_phone_login.dart';
+import 'package:myshop/view/screen/auth/splash_phone_login.dart';
 import 'package:myshop/view/widget/custom_button.dart';
-import 'package:myshop/view/widget/password_textfield.dart';
+import 'package:myshop/view/widget/auth/password_textfield.dart';
 
 class NewRegisterationPassword extends StatelessWidget {
   final TextEditingController password_controller=TextEditingController();

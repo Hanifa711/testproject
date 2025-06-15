@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:myshop/controller/password_controller.dart';
 import 'package:myshop/core/constant/app_colors.dart';
-import 'custom_textfield.dart';
+import '../custom_textfield.dart';
 
 
 class PasswordTextField extends StatelessWidget {

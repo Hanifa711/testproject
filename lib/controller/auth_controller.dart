@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:myshop/core/services/local_storage_service.dart';
 import 'package:myshop/data/model/user_model.dart';
 import 'package:myshop/routes/app_routes.dart';
-import 'package:myshop/view/screen/splash_phone_login.dart';
+import 'package:myshop/view/screen/auth/splash_phone_login.dart';
 
 class AuthController extends GetxController {
   final storage = StorageService();
@@ -86,7 +86,7 @@ class AuthController extends GetxController {
     } else {
       Get.snackbar('Welcome', 'Hello ${user.name}');
       // Navigate to home
-      Get.toNamed(AppRoutes.products);
+      Get.toNamed(AppRoutes.homescreen);
     }
   }
 

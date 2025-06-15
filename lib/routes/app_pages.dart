@@ -5,13 +5,13 @@ import 'package:myshop/view/screen/home/homepage.dart';
 import 'package:myshop/view/screen/home/homescreen.dart';
 import 'package:myshop/view/screen/home/more.dart';
 import 'package:myshop/view/screen/home/mybag.dart';
-import 'package:myshop/view/screen/new_registeration_password.dart';
-import 'package:myshop/view/screen/product_view.dart';
-import 'package:myshop/view/screen/register_info.dart';
+import 'package:myshop/view/screen/auth/new_registeration_password.dart';
+import 'package:myshop/view/screen/auth/product_view.dart';
+import 'package:myshop/view/screen/auth/register_info.dart';
 import 'package:myshop/view/screen/splash.dart';
-import 'package:myshop/view/screen/splash_otp.dart';
-import 'package:myshop/view/screen/splash_phone_login.dart';
-import 'package:myshop/view/screen/splash_password_login.dart';
+import 'package:myshop/view/screen/auth/splash_otp.dart';
+import 'package:myshop/view/screen/auth/splash_phone_login.dart';
+import 'package:myshop/view/screen/auth/splash_password_login.dart';
 import 'app_routes.dart';
 
 class AppPages {
@@ -20,10 +20,7 @@ class AppPages {
     GetPage(name: AppRoutes.splash_phone, page: () => SplashPhone()),
     GetPage(name: AppRoutes.splash_phone_pre, page: () => SplashPhonePre()),
     GetPage(name: AppRoutes.splash_otp, page: () => SplashPhoneOTP()),
-    GetPage(
-      name: AppRoutes.register_password,
-      page: () => NewRegisterationPassword(),
-    ),
+    GetPage( name: AppRoutes.register_password,page: () => NewRegisterationPassword(),),
     GetPage(name: AppRoutes.register_info, page: () => RegisterationInfo()),
 
     // ============= Home ==================

@@ -2,10 +2,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:myshop/view/screen/splash_phone_login.dart';
+import 'package:myshop/view/screen/auth/splash_phone_login.dart';
 
 class ImageController extends GetxController {
-  final pickedImage = Rxn<File>();
+  var pickedImage = Rxn<File>();
 
   final ImagePicker _picker = ImagePicker();
 
@@ -15,6 +15,7 @@ class ImageController extends GetxController {
       if (image != null) {
         debugPrint("Image saved");
         userModel.image=image.path;
+        pickedImage.value=File(image.path);
       }
     } catch (e) {
       debugPrint("Image picking error: $e");

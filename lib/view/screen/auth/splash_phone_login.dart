@@ -5,7 +5,7 @@ import 'package:myshop/controller/auth_controller.dart';
 import 'package:myshop/data/model/user_model.dart';
 import 'package:myshop/routes/app_routes.dart';
 import 'package:myshop/view/widget/custom_button.dart';
-import 'package:myshop/view/widget/phone_number_textfield.dart';
+import 'package:myshop/view/widget/auth/phone_number_textfield.dart';
 
 UserModel userModel =UserModel();
 class SplashPhone extends StatelessWidget {

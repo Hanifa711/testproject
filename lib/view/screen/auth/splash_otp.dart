@@ -5,7 +5,7 @@ import 'package:myshop/controller/auth_controller.dart';
 import 'package:myshop/core/constant/app_colors.dart';
 import 'package:myshop/routes/app_routes.dart';
 import 'package:myshop/view/widget/custom_button.dart';
-import 'package:myshop/view/widget/otp_widget.dart';
+import 'package:myshop/view/widget/auth/otp_widget.dart';
 
 class SplashPhoneOTP extends StatelessWidget {
   final TextEditingController phone_number_controller=TextEditingController();

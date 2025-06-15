@@ -5,7 +5,7 @@ import 'package:myshop/controller/auth_controller.dart';
 import 'package:myshop/controller/image_controller.dart';
 import 'package:myshop/core/functions/pick_image.dart';
 import 'package:myshop/routes/app_routes.dart';
-import 'package:myshop/view/screen/splash_phone_login.dart';
+import 'package:myshop/view/screen/auth/splash_phone_login.dart';
 import 'package:myshop/view/widget/custom_button.dart';
 import 'package:myshop/view/widget/custom_textfield.dart';
 
@@ -77,7 +77,7 @@ class RegisterationInfo extends StatelessWidget {
                     }
 
                     if(controller.userExist(userModel.phone!)){
-                       Get.toNamed(AppRoutes.products);
+                       Get.toNamed(AppRoutes.homescreen);
                     }
                   })
             ],

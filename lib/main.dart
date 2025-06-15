@@ -13,8 +13,6 @@ void main() async {
   await ScreenUtil.ensureScreenSize();
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
-   WidgetsFlutterBinding.ensureInitialized();
-  await GetStorage.init();
   Get.put(Crud());
   runApp(MyApp());
 }
@@ -33,7 +31,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
        theme: ThemeData(
         textTheme: GoogleFonts.poppinsTextTheme()),
-        initialRoute: AppRoutes.splash_phone_pre,
+        initialRoute: AppRoutes.splash,
       getPages: AppPages.pages,
         builder: (context, child) {
         return BackgroundWrapper(child: child);
