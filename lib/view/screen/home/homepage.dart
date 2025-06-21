@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:myshop/controller/home_controller.dart';
-import 'package:myshop/view/widget/home/customcardhome.dart';
+import 'package:myshop/controller/home/home_controller.dart';
+import 'package:myshop/view/widget/home/LocationSection.dart';
+import 'package:myshop/view/widget/home/SearchBarWidget.dart';
+import 'package:myshop/view/widget/category/categories_grid.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -9,7 +11,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(HomeController());
-
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -21,7 +22,6 @@ class HomePage extends StatelessWidget {
           ),
         ],
         titleSpacing: 25,
-
         title: Text(
           "Geocery Plus",
           style: TextStyle(fontWeight: FontWeight.bold),
@@ -32,52 +32,31 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                const CircleAvatar(
-                  backgroundColor: Colors.green,
-                  child: Icon(Icons.location_on, color: Colors.white),
-                ),
-                const SizedBox(width: 10),
-                const Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Your Location"),
-                      Text(
-                        "32 Llanberis Close, Tonteg, CF38 1HR",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                const Icon(Icons.arrow_forward),
-              ],
-            ),
-
+            LocationSection(address: "32 Llanberis Close, Tonteg, CF38 1HR"),
             const SizedBox(height: 20),
-
-            TextField(
-              decoration: InputDecoration(
-                hintText: "Search Anything",
-                prefixIcon: const Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                fillColor: Colors.grey[100],
-                filled: true,
-              ),
-            ),
-
+            SearchBarWidget(onChanged: (val) {}),
             const SizedBox(height: 20),
-
             GetBuilder<HomeController>(
               builder: (controller) {
                 if (controller.categories.isEmpty) {
                   return const Center(child: CircularProgressIndicator());
                 } else {
                   final firstSix = controller.categories.take(6).toList();
-                  return CustomCardHome(categories: firstSix);
+                  final images = firstSix.map((cat) => cat.image).toList();
+                  final names = firstSix.map((cat) => cat.name).toList();
+                  return CategoriesGrid(
+                    categories: names,
+                    images: images,
+                    onCategoryTap: (index) {
+                      Get.toNamed(
+                        "/products",
+                        arguments: {
+                          "id": firstSix[index].id,
+                          "name": firstSix[index].name,
+                        },
+                      );
+                    },
+                  );
                 }
               },
             ),

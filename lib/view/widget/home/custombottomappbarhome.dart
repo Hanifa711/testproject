@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:myshop/controller/homescreen_controller.dart';
+import 'package:myshop/controller/home/homescreen_controller.dart';
 import 'package:myshop/view/widget/home/custombuttonappbar.dart';
 
 class CustomBottomAppBarHome extends StatelessWidget {

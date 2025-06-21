@@ -13,4 +13,6 @@ abstract class AppRoutes {
   static const String category = "/category";
   static const String mybag = "/mybag";
   static const String more = "/more";
+  static const String productdetails = "/productdetails_view";
+  static const String paymentMethod = "/payment_method";
 }

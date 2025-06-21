@@ -30,7 +30,7 @@ class CustomButtonAppBar extends StatelessWidget {
           height: 45,
           child: Icon(
             icondata,
-            color: active ? Colors.white : Colors.black,
+            color: active ? MyColors.white : Colors.black,
             size: 24,
           ),
         ),
